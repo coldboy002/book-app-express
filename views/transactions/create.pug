@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      .col-6.mx-auto
+        h1.text-center Giao dịch
+        .container.mx-auto
+          .row
+            .col-12
+              form.mt-4(method='POST')
+                div
+                  .form-group
+                    label(for='exampleFormControlSelect1') Người dùng
+                    select#exampleFormControlSelect1.form-control(name="user")
+                      each user in users
+                        option=user.name
+                  .form-group
+                    label(for='exampleFormControlSelect1') Sách
+                    select#exampleFormControlSelect1.form-control(name="book")
+                      each book in books
+                        option=book.title
+                  button.btn.btn-block.btn-primary(type='submit') Tạo

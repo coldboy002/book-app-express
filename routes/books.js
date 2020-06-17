@@ -1,58 +1,28 @@
 const express = require("express");
 const router = express.Router();
 
-const db = require("../db");
+const booksController = require('../controllers/books')
 
 /* GET books listing. */
-router.get("/", (req, res) => {
-  res.render("books/index", { books: db.get("books").value() });
-});
+router.get("/",booksController.index);
 
 // Create a new book
 router
   .route("/create")
-  .get((req, res) => {
-    res.render("books/create");
-  })
-  .post((req, res) => {
-    db.get("books").insert(req.body).write();
-
-    res.redirect("/books");
-  });
+  .get(booksController.getCreateBook)
+  .post(booksController.postCreateBook);
 
 // View a book
 router
-  .get("/:id/view",(req, res)=>{
-    const { id } = req.params;
-    const { title, description } = db.get("books").getById(id).value();
-    
-    res.render("books/view", { title, description });
-  })
+  .get("/:id/view",booksController.viewBook)
 
 // Update  books infor
 router
   .route("/:id/update")
-  .get( (req, res) => {
-    const { id } = req.params;
-    const { title, description } = db.get("books").getById(id).value();
-
-    res.render("books/update", { title, description });
-  })
-  .post((req, res) => {
-    const { id } = req.params;
-    const { title, description } = req.body;
-    db.get("books").updateById(id, { title, description }).write();
-
-    res.redirect("/books");
-  });
+  .get( booksController.getUpdateBook)
+  .post(booksController.postUpdateBook);
 
 // Delete a book
-router.get("/:id/delete", (req, res) => {
-  const { id } = req.params;
-  const { title, description } = req.body;
-  db.get("books").removeById(id).write();
-
-  res.redirect("/books");
-});
+router.get("/:id/delete", booksController.deleteBook);
 
 module.exports = router;

@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      .col-6.mx-auto
+        h1.text-center Danh sách giao dịch
+        a(href="/transactions/create" class="btn btn-primary") Thêm giao dịch
+  .container
+    .row
+      .col-12
+        table.table
+          thead
+            tr
+              th(scope='col') STT
+              th(scope='col') Người dùng
+              th(scope='col') Sách
+              th(scope='col') Hoàn thành
+          tbody
+            each transaction,index in transactions
+              tr
+                th.align-middle(scope='row')=index + 1
+                td.align-middle(scope='row')=transaction.user.name
+                td.align-middle(scope='row')=transaction.book.title
+                td.align-middle(scope='row')
+                  if transaction.isComplete
+                    a.btn.btn-primary(href=`/transactions/${transaction.id}/complete` type='button') Đã hoàn thành
+                  else
+                    a.btn.btn-secondary(href=`/transactions/${transaction.id}/complete`) Chưa hoàn thành
