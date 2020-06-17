@@ -1,12 +1,6 @@
 {
   "verbose": true,
   "ignore": [
-    ".git",
-    "node_modules",
-    "*.marko.js",
     "db.json"
-  ],
-  "watch": [
-    "**/*"
   ]
 }
