@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  .books-wrapper.text-center
+    h1 Quản lý sách
+    a(href="/books/create" class="btn btn-primary") Thêm sách
+  .container
+    .row
+      .col-12
+        table.table
+          thead
+            tr
+              th(scope='col') #
+              th(scope='col') Tiêu đề
+              th(scope='col') Mô tả
+              th(scope='col') Hành động
+          tbody
+            each book,index in books
+              tr
+                th.align-middle(scope='row')=index+1
+                td.align-middle(scope='row')=book.title
+                td.align-middle(scope='row')=book.description
+                td(scope='row')
+                  a.btn.btn-info.mr-2( href=`/books/${book.id}/view` type='button') Xem
+                  a.btn.btn-success.mr-2( href=`/books/${book.id}/update` type='button') Sửa
+                  a.btn.btn-danger( href=`/books/${book.id}/delete` type='button') Xóa
+

@@ -1,7 +1,33 @@
 doctype html
 html
   head
-    title= title
+    meta(charset='utf-8')
+    link(rel="icon" type="image/png" sizes="64x64" href="https://cdn.glitch.com/2b0ba338-f196-4c3b-a70f-1d0a8630d8cf%2Ffavicon-64x64.png?v=1588303595280g")
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1 shrink-to-fit=no')
+    title Welcome to coderX
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    .container-fluid.fixed-top.px-0
+      .row
+        .col-12
+          nav.navbar.navbar-expand-lg.navbar-light.bg-light
+            a.navbar-brand(href='#') Books
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+              span.navbar-toggler-icon
+            #navbarSupportedContent.collapse.navbar-collapse
+              ul.navbar-nav.mr-auto
+                li.nav-item.active
+                  a.nav-link(href='/')
+                    | Home 
+                li.nav-item
+                  a.nav-link(href='/books') Book
+              form.form-inline.my-2.my-lg-0
+                input.form-control.mr-sm-2(type='search' placeholder='Search' aria-label='Search')
+                button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+    .container.mt-5
     block content
+    script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js')

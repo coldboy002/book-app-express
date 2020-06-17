@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      .col-6.mx-auto
+        h1.text-center Cập nhật thông tin sách
+        .container.mx-auto
+          .row
+            .col-12
+              form.mt-4(method='POST')
+                div
+                  .form-group
+                    label(for='title') Tiêu đề:
+                    input#title.form-control(type='text' name='title' placeholder="Xin nhập tiêu đề sách" value=title required)
+                  .form-group
+                    label(for='description') Mô tả:
+                    input#description.form-control(type='text' name='description'  placeholder="Xin nhập mô tả sách" value=description required)
+                  button.btn.btn-primary.btn-block(type="submit").btn.btn-primary Cập nhật
