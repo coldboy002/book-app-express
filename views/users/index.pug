@@ -1,0 +1,42 @@
+extends ../layout
+
+block content
+  .books-wrapper.text-center
+    h1 Quản lý người dùng
+    a(href="/users/create" class="btn btn-primary") Thêm người dùng
+  .container
+    .row
+      .col-12
+        table.table
+          thead
+            tr
+              th(scope='col') STT
+              th(scope='col') Tên
+              th(scope='col') Tuổi
+              th(scope='col') Hành động
+          tbody
+            each user,index in users
+              tr
+                th.align-middle(scope='row')=index+1
+                td.align-middle(scope='row')=user.name
+                td.align-middle(scope='row')=user.age
+                td(scope='row')
+                  a.btn.btn-info.mr-2( href=`/users/${user.id}/view` type='button') Xem
+                  a.btn.btn-success.mr-2( href=`/users/${user.id}/update` type='button') Sửa
+                  a.btn.btn-danger( href=`/users/${user.id}/delete` type='button') Xóa
+    .row
+      .col
+        nav(aria-label='Page navigation example')
+          ul.pagination
+            li.page-item
+              a.page-link(href='#' aria-label='Previous')
+                span(aria-hidden='true') &laquo;
+            li.page-item
+              a.page-link(href='#') 1
+            li.page-item
+              a.page-link(href='#') 2
+            li.page-item
+              a.page-link(href='#') 3
+            li.page-item
+              a.page-link(href='#' aria-label='Next')
+                span(aria-hidden='true') &raquo;

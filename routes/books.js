@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   res.render("books/index", { books: db.get("books").value() });
 });
 
-// Create books
+// Create a new book
 router
   .route("/create")
   .get((req, res) => {
@@ -20,6 +20,7 @@ router
     res.redirect("/books");
   });
 
+// View a book
 router
   .get("/:id/view",(req, res)=>{
     const { id } = req.params;
