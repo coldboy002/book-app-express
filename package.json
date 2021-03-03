@@ -14,7 +14,7 @@
     "lodash-id": "^0.14.0",
     "lowdb": "^1.0.0",
     "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11"
+    "pug": "3.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
